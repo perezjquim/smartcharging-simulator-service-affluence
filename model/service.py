@@ -34,18 +34,18 @@ class ModelService:
         23 : 1,    #0h00 - 0h59
     }                                                                                        
 
-    name = 'model_affluence'
+    name = 'model_energysim_travel_affluence'
 
-    event_dispatcher = EventDispatcher()
+    event_dispatcher = EventDispatcher( )
 
     @rpc
-    def get_affluence(self, hour_of_day):
-        affluence = self.generate_affluence(hour_of_day)
+    def get_affluence( self, hour_of_day ):
+        affluence = self.generate_affluence( hour_of_day )
+        response = json.dumps( { 'affluence': affluence } )
 
-        response = json.dumps({'affluence': affluence})
         return response
 
-    def generate_affluence(self, hour_of_day):
-        affluence = self.AFFLUENCE_CONFIG.get(hour_of_day)
+    def generate_affluence( self, hour_of_day ):
+        affluence = ModelService.AFFLUENCE_CONFIG.get( hour_of_day )
 
         return affluence

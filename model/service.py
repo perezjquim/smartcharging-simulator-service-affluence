@@ -40,7 +40,8 @@ class ModelService:
 
     @rpc
     def get_affluence( self, hour_of_day ):
-        affluence = self.generate_affluence( hour_of_day )
+        hour_of_day_int = int( hour_of_day )
+        affluence = self.generate_affluence( hour_of_day_int )
         response = json.dumps( { 'affluence': affluence } )
 
         return response
